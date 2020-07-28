@@ -3,9 +3,8 @@ const nextButton = document.getElementById("nextBtn")
 const questionContainerElement = document.getElementById("questionContainer")
 const questionElement = document.getElementById("question")
 const answerButtonsElement = document.getElementById ("answerButtons")
-const timerElement =document.getElementById("timer")
-var timer = 30
-
+const timeLeftDisplay =document.getElementById("timeLeft")
+let timeLeft = 30
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -26,11 +25,10 @@ function startGame(){
 
 function setTime(){
     timerInterval= setInterval(function(){
-    secondsLeft--;
-    timerElement.innerText = secondsLeft;
-    if(secondsLeft === 0) {
-        clearInterval(timerInterval);
-    }
+        if(timeLeft <=0)  {
+            clearInterval(timeLeft=0)
+        }
+        timeLeftDisplay.innerText = secondsLeft;
     }, 1000)
 }
 
