@@ -30,7 +30,7 @@ body{
 .btn{
     background-color: skyblue;
     border: 1px solid;
-    padding: 5px
+    padding: 10px
 
 }
 
@@ -40,6 +40,12 @@ body{
 }
 
 .startBtn{
+    padding: 20px;
+    margin-top: 5px;
+    background-color: greenyellow;
+}
+
+.nextBtn{
     padding: 20px;
     margin-top: 5px;
     background-color: greenyellow;
