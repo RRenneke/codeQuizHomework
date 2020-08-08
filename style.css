@@ -1,0 +1,22 @@
+.questionBox{
+    border: solid;
+    border-color: chartreuse;
+    background-color: cornsilk;
+    padding: 20px
+}
+
+.theQuestion{
+    color: blue
+}
+
+.answerOne, .answerTwo, .answerThree, .answerFour{
+    background-color: chartreuse;
+}
+
+.timer{
+    border: darkmagenta;
+    background-color: darkmagenta;
+    color: white;
+    font-size: 30px;
+    padding: 10px
+}
