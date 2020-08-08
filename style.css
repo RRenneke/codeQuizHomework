@@ -1,4 +1,12 @@
+.instructions{
+    font-size: 35px;
+    font-weight: bold;
+    color: mediumblue;
+}
+
+
 .questionBox{
+    display: none;
     border: solid;
     border-color: chartreuse;
     background-color: cornsilk;
@@ -11,12 +19,20 @@
 
 .answerOne, .answerTwo, .answerThree, .answerFour{
     background-color: chartreuse;
+    font-size: 25px;
 }
 
 .timer{
+    display: none;
     border: darkmagenta;
     background-color: darkmagenta;
     color: white;
     font-size: 30px;
+    padding: 10px
+}
+
+.startBtn{
+    padding: 25px;
+    color: red;
     padding: 10px
 }
