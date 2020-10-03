@@ -27,39 +27,3 @@ button, #submitScoreBtn {
 button:hover{
     box-shadow: 4px 3px 6px #4450bd;
 }
-    
-#timer{
-    color:red;
-    font-size: x-large;
-    text-align: center;
-}
-
-#result {
-    display: none;
-}
-   
-#highScoreColumnHeaders{
-    display:flex;
-    justify-content: space-around;
-    border-bottom-style: outset;
-    background-color: #b490df;
-    color: lightgray;
-}
-    
-#highScoreName{
-    display: inline-block;
-    padding-left:50px;
-    font-family: fantasy;
-    font-size: 25px;
-}
-    
-#highScoreScore{
-    float: right;
-    padding-right: 50px;
-    font-family: fantasy;
-    font-size: 25px;
-}
-
-#againClearBtns{
-    display: none;
-}

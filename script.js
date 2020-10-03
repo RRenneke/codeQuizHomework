@@ -53,3 +53,50 @@ var userNameEl = document.getElementById("userName");
 var scoresTableEl = document.getElementById("highScoreTable");
 var highScoreNameEl = document.getElementById("highScoreName");
 var highScoreScoreEl = document.getElementById("highScoreScore");
+
+
+// function that will go through the questions and answers, and display to the page
+function generateQuizQuestions(){
+    //I don't want the 'game over' page to be display yet
+    gameOverPageEl.style.display = "none";
+    if (currentQuestionIndex === finalQuestionIndex){
+        return showScore();
+    } 
+    //create a variable for the quesitons and choices array
+    var currentQuestion = quizQuestions[currentQuestionIndex];
+    //display to the user that question and matching choices for each array index. 
+    questionsEl.innerHTML = currentQuestion.question;
+    aBtn.innerHTML = currentQuestion.choiceA;
+    bBtn.innerHTML = currentQuestion.choiceB;
+    cBtn.innerHTML = currentQuestion.choiceC;
+    dBtn.innerHTML = currentQuestion.choiceD;
+};
+
+//function to start the quiz which will display the questions page and start the timer decrementing
+//class example 4.8 provides some timer code
+function startQuiz(){
+    //display the correct page
+    gameOverPageEl.style.display = "block";
+    homePageEl.style.display = "none";
+    //run the previous function to generate each question in the index
+    generateQuizQuestions();
+
+    //time will decrement unless there is not time left which will end the game by running the function that will take the user to the game over page
+     //create a variable that is a reference to time, 
+    //what set interval takes as an agument is a call back function
+    //what the fucntion returns is a reference to the interval
+    timerInterval = setInterval(function() {
+        timeLeft--;
+         //manipute the DOM elemement 
+        timerEl.textContent = "Time left: " + timeLeft;
+    
+        //fucntion will continue so have to give it an end
+        if(timeLeft === 0) {
+          //take the reference or timeInerval and clear it  
+          clearInterval(timerInterval);
+          showScore();
+        }
+        //unit of miliseconds (one thousants of a second)
+      }, 1000);
+      questionsPageEl.style.display = "block";
+}
