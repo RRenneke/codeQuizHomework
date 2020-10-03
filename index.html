@@ -1,32 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz Challenge</title>
+    <!--CSS and Bootstarp -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
-    <script defer src="script.js"></script>
-    <title>Qizz Code</title>
 </head>
-
 <body>
-    <container class="instructions">Click Start Now to start the quiz!
-        <div class="questionBox">
-            <h1 class="theQuestion">here is where the question will go</h1>
-            <button class="answerOne">answer one</button>
-            <button class="answerTwo">answer two</button>
-            <button class="answerThree">answer three</button>
-            <button class="answerFour">answer four</button>
+    <div class="container">
+        <!--Container to hold the landing page with opener, instructions and start quiz button-->
+        <!--Container from bootstrap-->
+        <div class="container" id="homePage">
+            <div class="card border-success mb-5">
+                <div class="card-header bg-transparent border-success" id="headerBox">Javascript Quiz Game
+                </div>
+
+                <div class="card-body text-success">
+                    <h5 class="card-title">See how fast you can answer Javascript related questions. Be careful not to get the answer incorrect, time will be deducted for an incorrect answer. Can you be the fastest quiz taker? </h5>
+                    <p class="card-text">The timer will begin when you click start.  Good luck!</p>
+                </div>
+
+                <div class="card-footer bg-transparent border-success">
+                    <!--Button will start the quiz-->
+                    <button id="startBtn">Start</button>
+                    <!--get Element by Id not needed due to onclick function-->
+                    <button id="startPageHighScore" onclick="showHighScore()">View High Scores</button>
+                </div>
+            </div>
         </div>
-    </container>
 
-    <br>
-    <br>
+        <!--Container to hold the questions and choices-->
+        <div class="container" id="questionsPage" style = "display:none">
+            <div class="card border-success mb-5">
+                <div class="card-header bg-transparent border-success"id="headerBox">Javascript Quiz Game
+                </div>
+        
+                <div class="card-body text-success">
+                    <h5 class="card-title" id="question"></h5>
+                    <p class="card-text">
+                        <div id="questions"><p>Questions Placeholder</p>
+                        </div>
 
-    <button class="startBtn">Start Now</button> 
-    <container class="time"></container>
+                        <button id="a" onclick="checkAnswer('a')">A</button>
+                        <button id="b" onclick="checkAnswer('b')">B</button>
+                        <button id="c" onclick="checkAnswer('c')">C</button>
+                        <button id="d" onclick="checkAnswer('d')">D</button>
+                        
+                        <div id="answerResult"></div>
+                    </p>
+                </div>
+        
+                <div class="card-footer bg-transparent border-success">
+                    <div id="timer">Time left: </div>
+                </div>
+            </div>
+        </div> 
+
+        <!--Container for when the quiz is over and user can enter initals-->
+        <div class="container" id="gameOverPage" style = "display:none">
+            <div class="card border-success mb-5">
+                <div class="card-header bg-transparent border-success"id="headerBox">Game Over
+                </div>
+    
+                <div class="card-body text-success">
+                    <h5 class="card-title">Enter your name for the score board. 
+                        <div class="form-inline">
+                            <input type="text" size = "40" placeholder="Enter here" name="intials" id="userName"/>
+                        </div>
+                    </h5>
+    
+                    <div class="card-footer bg-transparent border-success">
+                        <!--Button will capture the initals for high score-->
+                        <button class="btn btn-primary" id="submitScoreBtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--Container to hold the scores or start quiz again-->
+    <div class="container" id="scoresPage" style = "display:none">
+        <div class="card border-success mb-5">
+            <div class="card-header bg-transparent border-success"id="headerBox">Javascript Quiz Game: Score Board
+            </div>
+
+            <div class="card-body text-success">
+                <p class="card-text"id="highScoreTable">The following are the current high scores. See how you rank.</p>
+                <div id="highScoreColumnHeaders">
+                    <h3>Player's Name</h3>
+                    <h3>Player's Score</h3>
+                </div>
+                
+                <div id = "highScoreName"></div>
+                <div id = "highScoreScore"></div>
+            </div>
+        
+            <div class="card-footer bg-transparent border-success">
+                <div id="againClearBtns">
+                    <button id="playAgain" onclick="backToHome()">Back to Home</button>
+                    <button id="clearHighScore" onclick="clearScores()">Clear Highscores</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+
+    <script src="script.js"></script>
 </body>
-
 </html>
