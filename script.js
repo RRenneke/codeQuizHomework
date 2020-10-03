@@ -100,3 +100,33 @@ function startQuiz(){
       }, 1000);
       questionsPageEl.style.display = "block";
 }
+
+// Event listener will run when user clicks submit after entering thier name. Tutor help 
+submitBtn .addEventListener("click", function highscore(){
+    //message for if the users trys to proceed without entering their name
+    if(userNameEl.value === "") {
+        alert("Please enter your name.");
+        return false;
+    }else{
+        //need variables for putting score local storage for the table
+        //use JSON.parse to convert to string
+        var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+        //take off any spaces the user puts when entering thier name
+        var currentUser = userNameEl.value.trim();
+        //variable to store the user provided name and time left which is now the score
+        var currentHighscore = {
+            name : currentUser,
+            score : timeLeft
+        };
+        //show the scores table page
+        gameOverPageEl.style.display = "none";
+        scoresPageEl.style.display = "flex";
+        scoresTableEl.style.display = "block";
+        againClearBtns.style.display = "flex";
+        
+        //set the newest score as the current score
+        savedHighscores.push(currentHighscore);
+        localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+        generateHighscores();
+    }
+});
