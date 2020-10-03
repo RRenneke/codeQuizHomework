@@ -54,6 +54,12 @@ var scoresTableEl = document.getElementById("highScoreTable");
 var highScoreNameEl = document.getElementById("highScoreName");
 var highScoreScoreEl = document.getElementById("highScoreScore");
 
+// Global variables needed to run fucntion but are not in the HTML
+var finalQuestionIndex = quizQuestions.length;
+var currentQuestionIndex = 0;
+var timeLeft = 45;
+var timerInterval;
+var correct;
 
 // function that will go through the questions and answers, and display to the page
 function generateQuizQuestions(){
