@@ -130,3 +130,33 @@ submitBtn .addEventListener("click", function highscore(){
         generateHighscores();
     }
 });
+
+// function to take the user to the page to enter their intials since the game is over. 
+function showScore(){
+    questionsPageEl.style.display = "none"
+    gameOverPageEl.style.display = "flex";
+    clearInterval(timerInterval);
+    //Set user name variable to blank since the user needs to enter it
+    userNameEl.value = "";
+}
+
+//functinon to check the answer. If incorrect, 5 seconds is subtracted from the time. 
+//I struggled to display if the answer was correct or incorrect while the user was still on the page so I used alerts. 
+function checkAnswer(answer){
+    correct = quizQuestions[currentQuestionIndex].correctAnswer;
+    //correct answer will alter the user, not mess with the timer, and go to next questions (assuming it's not the last question)
+    if (answer === correct && currentQuestionIndex !== finalQuestionIndex){
+        alert("Correct!");
+        currentQuestionIndex++;
+        generateQuizQuestions();
+    //if incorrect, the user will be notified, 5 seconds are subtracted from the timer, and they go to the next question
+    }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
+        alert("That Is Incorrect. 5 seconds will be subtracted from your time.")
+        timeLeft = timeLeft - 5;
+        currentQuestionIndex++;
+        generateQuizQuestions();
+    //if there are no more questions it will bring the user to the page to enter their name
+    }else{
+        showScore();
+    }
+}
