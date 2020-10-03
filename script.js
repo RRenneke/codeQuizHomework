@@ -160,3 +160,48 @@ function checkAnswer(answer){
         showScore();
     }
 }
+
+// function sets name and score to an empty string and gets the list from local storage and displays it to the page. Tutor helped with function
+function generateHighscores(){
+    highScoreNameEl.innerHTML = "";
+    highScoreScoreEl.innerHTML = "";
+    var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+    for (i=0; i<highscores.length; i++){
+        var newNameSpan = document.createElement("li");
+        var newScoreSpan = document.createElement("li");
+        newNameSpan.textContent = highscores[i].name;
+        newScoreSpan.textContent = highscores[i].score;
+        highScoreNameEl.appendChild(newNameSpan);
+        highScoreScoreEl.appendChild(newScoreSpan);
+    }
+}
+
+// Show high score page
+function showHighScore(){
+    homePageEl.style.display = "none"
+    gameOverPageEl.style.display = "none";
+    scoresPageEl.style.display = "flex";
+    scoresTableEl.style.display = "block";
+    againClearBtns.style.display = "flex";
+    //runs the function to get the values (if there are any in local storage)
+    generateHighscores();
+}
+
+// function goes back to homepage and resets questions array and timer back to 45 seconds
+function backToHome(){
+    scoresPageEl.style.display = "none";
+    gameOverPageEl.style.display = "none";
+    homePageEl.style.display = "flex";
+    timeLeft = 45;
+    currentQuestionIndex = 0;
+}
+
+// function clears local storage
+function clearScores(){
+    window.localStorage.clear();
+    highScoreNameEl.textContent = "";
+    highScoreScoreEl.textContent = "";
+}
+
+//event listener to start the game when the button is clicked
+startBtn.addEventListener("click",startQuiz);
