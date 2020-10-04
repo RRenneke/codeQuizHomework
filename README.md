@@ -18,6 +18,7 @@ THEN I can save my initials and score
 
 Links: 
 https://github.com/RRenneke/codeQuizHomework
+
 https://rrenneke.github.io/codeQuizHomework/
 
 <img src="Assets/homePageScreenShot.png" alt="Home Page Screenshot">
